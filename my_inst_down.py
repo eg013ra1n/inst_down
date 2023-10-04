@@ -44,9 +44,10 @@ async def handle_instagram_link(message: types.Message):
     for file in glob.glob("*.jpg"):
       print(file)
       media.attach_photo(types.InputFile(file))
-      await message.reply_media_group(media=media)
-      media = types.MediaGroup()
-      await types.ChatActions.upload_video()
+    await message.reply_media_group(media=media)
+    
+    media = types.MediaGroup()
+    await types.ChatActions.upload_video()
     # send video
     for file in glob.glob("*.mp4"):
       print(file)
@@ -57,7 +58,6 @@ async def handle_instagram_link(message: types.Message):
       os.remove(file)
     # Change back to the parent directory
     os.chdir("..")
-
     # Remove the directory
     os.rmdir(directory)
 
